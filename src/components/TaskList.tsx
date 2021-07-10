@@ -16,8 +16,8 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     if (!newTaskTitle.trim()) return;
-    setTasks((state) => [
-      ...state,
+    setTasks((tasks) => [
+      ...tasks,
       {
         isComplete: false,
         title: newTaskTitle,
@@ -27,17 +27,17 @@ export function TaskList() {
   }
 
   function handleToggleTaskCompletion(id: number) {
-    setTasks((state) => {
-      return state.map((todo) => {
-        return todo.id === id
-          ? { ...todo, isComplete: !todo.isComplete }
-          : todo;
+    setTasks((tasks) => {
+      return tasks.map((task) => {
+        return task.id === id
+          ? { ...task, isComplete: !task.isComplete }
+          : task;
       });
     });
   }
 
   function handleRemoveTask(id: number) {
-    setTasks((state) => state.filter((task) => task.id !== id));
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
   }
 
   return (
